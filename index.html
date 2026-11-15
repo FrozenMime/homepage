@@ -113,23 +113,7 @@
 
     .books { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
     .book { display: flex; gap: 18px; }
-    .cover {
-      flex-shrink: 0;
-      width: 96px;
-      aspect-ratio: 2 / 3;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      background: var(--tile);
-      display: flex;
-      align-items: flex-end;
-      padding: 10px;
-      font-size: 0.8rem;
-      line-height: 1.25;
-      color: var(--muted);
-      overflow: hidden;
-      position: relative;
-    }
-    .cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .cover-img { flex-shrink: 0; align-self: flex-start; width: 96px; height: auto; border: 1px solid var(--line); border-radius: 4px; }
     .book h3 { font-size: 1.25rem; line-height: 1.25; }
     .book .mono { display: block; margin: 4px 0 8px; }
     .book p { margin-bottom: 10px; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
@@ -166,11 +150,11 @@
     <!-- Update this block when a new Thinking in Ink post goes out -->
     <article class="latest">
       <div>
-        <span class="mono">Latest from Thinking in Ink · Nov 2026</span>
-        <h2 class="serif"><a href="#">The notebook is the interface</a></h2>
-        <p>Why I keep coming back to paper, even while building AI tools.</p>
+        <span class="mono">Latest from Thinking in Ink · Jul 2026</span>
+        <h2 class="serif"><a href="https://thinkinginink.substack.com/p/how-ai-will-rewrite-the-geography">How AI will rewrite the geography of work (twice)</a></h2>
+        <p>What do brains, semiconductors, and data centers have in common?</p>
       </div>
-      <a class="link" href="#">Read on Substack ↗</a>
+      <a class="link" href="https://thinkinginink.substack.com/p/how-ai-will-rewrite-the-geography">Read on Substack ↗</a>
     </article>
 
     <section>
@@ -181,19 +165,16 @@
           <div class="media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></div>
           <h3>Prattle</h3>
           <p>Dictation that stays on your phone</p>
-          <a class="link" href="#">Write-up →</a>
         </div>
         <div class="card">
           <div class="media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></div>
           <h3>Twine</h3>
           <p>Video messages you can skim</p>
-          <a class="link" href="#">Write-up →</a>
         </div>
         <div class="card">
           <div class="media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></div>
           <h3>Holistic</h3>
           <p>Wellness tracking, all in one place</p>
-          <a class="link" href="#">Write-up →</a>
         </div>
       </div>
     </section>
@@ -201,11 +182,12 @@
     <section>
       <h2 class="section-title serif">More things I've made</h2>
       <ul class="list">
-        <li><span>Glimmer <span class="desc">· Comedy and concert planning</span></span><a class="link" href="#">Write-up →</a></li>
-        <li><span>Kindred <span class="desc">· Hyper-local NYC meetups</span></span><a class="link" href="#">Write-up →</a></li>
-        <li><span>Pip <span class="desc">· Product management interview prep</span></span><a class="link" href="#">Write-up →</a></li>
-        <li><span>Double Take <span class="desc">· Virtual try-on</span></span><a class="link" href="#">Write-up →</a></li>
-        <li><span>Overwatch <span class="desc">· Personal AI assistant</span></span><a class="link" href="#">Write-up →</a></li>
+        <li><span>Lore <span class="desc">· Ebook-to-audiobook converter</span></span><a class="link" href="https://thinkinginink.substack.com/p/project-lore-ebook-to-audiobook-converter">Write-up →</a></li>
+        <li><span>Glimmer <span class="desc">· Comedy and concert planning</span></span></li>
+        <li><span>Kindred <span class="desc">· Hyper-local NYC meetups</span></span></li>
+        <li><span>Pip <span class="desc">· Product management interview prep</span></span></li>
+        <li><span>Double Take <span class="desc">· Virtual try-on</span></span></li>
+        <li><span>Overwatch <span class="desc">· Personal AI assistant</span></span></li>
       </ul>
     </section>
 
@@ -213,21 +195,21 @@
       <h2 class="section-title serif">Books</h2>
       <div class="books">
         <div class="book">
-          <div class="cover serif">Flower of Hatred</div>
+          <img class="cover-img" src="media/flower-of-hatred.jpg" alt="Flower of Hatred cover" width="320" height="480" loading="lazy">
           <div>
             <h3 class="serif">Flower of Hatred</h3>
-            <span class="mono">Novel · Year</span>
-            <p>One or two lines on what the book is about and who it's for.</p>
-            <a class="link" href="#">Get the book →</a>
+            <span class="mono">Fantasy novel · 2025</span>
+            <p>Everyone awakens one of seven powers on the way to adulthood. Everyone except Kira, who will pay any price to change that.</p>
+            <a class="link" href="https://a.co/d/0b1kpZhb">Get the book →</a>
           </div>
         </div>
         <div class="book">
-          <div class="cover serif">Breaking into product management</div>
+          <img class="cover-img" src="media/get-hired-as-a-product-manager.jpg" alt="Get Hired as a Product Manager cover" width="320" height="511" loading="lazy">
           <div>
-            <h3 class="serif">Breaking into product management</h3>
-            <span class="mono">Nonfiction · Year</span>
-            <p>A practical guide for landing your first PM role.</p>
-            <a class="link" href="#">Get the book →</a>
+            <h3 class="serif">Get Hired as a Product Manager</h3>
+            <span class="mono">Nonfiction · Career</span>
+            <p>Land your first product management job without an MBA, bootcamp, or product experience, using the career you already have.</p>
+            <a class="link" href="https://a.co/d/0dmwYJrW">Get the book →</a>
           </div>
         </div>
       </div>
@@ -236,9 +218,9 @@
     <footer>
       <span>© <span id="y"></span> Paul Bendor-Samuel</span>
       <nav>
-        <a href="#">Substack</a>
-        <a href="#">LinkedIn</a>
-        <a href="#">X</a>
+        <a href="https://thinkinginink.substack.com/">Substack</a>
+        <a href="https://www.linkedin.com/in/paulbendorsamuel/">LinkedIn</a>
+        <a href="https://x.com/PaulBendor">X</a>
       </nav>
     </footer>
   </main>
