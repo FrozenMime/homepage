@@ -11,25 +11,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --fg: #0a0a0a;
-      --muted: #6b6b6b;
-      --faint: #9a9a9a;
-      --line: #e7e7e7;
-      --line-strong: #c9c9c9;
-      --tile: #f4f4f2;
-      --accent: #2f4bff;
+      --bg: #f7f0e6;
+      --fg: #2b201a;
+      --muted: #7a6658;
+      --faint: #9c8777;
+      --line: #e8dccb;
+      --line-strong: #d6c4ad;
+      --tile: #efdccb;
+      --accent: #b4532a;
+      --heading: #9c4425;
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #0a0a0a;
-        --fg: #f5f5f5;
-        --muted: #a0a0a0;
-        --faint: #6f6f6f;
-        --line: #232323;
-        --line-strong: #3a3a3a;
-        --tile: #161616;
-        --accent: #8a96ff;
+        --bg: #1a1411;
+        --fg: #f2e8dc;
+        --muted: #ad9a8a;
+        --faint: #7d6c5e;
+        --line: #2e241e;
+        --line-strong: #46382d;
+        --tile: #261d18;
+        --accent: #e08a62;
+        --heading: #e39a74;
       }
     }
     * { box-sizing: border-box; margin: 0; }
@@ -80,6 +82,7 @@
       border-bottom: 1px solid var(--line-strong);
       font-size: 1.6rem;
       line-height: 1.2;
+      color: var(--heading);
     }
 
     .featured { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
@@ -144,7 +147,7 @@
   <main>
     <header>
       <h1 class="serif">Paul Bendor-Samuel</h1>
-      <p class="intro">I build small, opinionated apps and write about thinking with tools. Currently in New York.</p>
+      <p class="intro">Building a better world.</p>
     </header>
 
     <!-- Update this block when a new Thinking in Ink post goes out -->
