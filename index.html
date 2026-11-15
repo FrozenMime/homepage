@@ -4,197 +4,246 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Paul Bendor-Samuel</title>
-  <meta name="description" content="Apps by Paul Bendor-Samuel">
+  <meta name="description" content="Paul Bendor-Samuel builds small, opinionated apps and writes Thinking in Ink.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500&family=JetBrains+Mono:wght@400&family=Newsreader:opsz,wght@6..72,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
       --fg: #0a0a0a;
-      --muted: #737373;
-      --line: #e5e5e5;
+      --muted: #6b6b6b;
+      --faint: #9a9a9a;
+      --line: #e7e7e7;
+      --line-strong: #c9c9c9;
+      --tile: #f4f4f2;
       --accent: #2f4bff;
-      --row-hover: #f5f6ff;
     }
     @media (prefers-color-scheme: dark) {
       :root {
         --bg: #0a0a0a;
-        --fg: #fafafa;
-        --muted: #8a8a8a;
-        --line: #262626;
-        --accent: #7d8bff;
-        --row-hover: #12142a;
+        --fg: #f5f5f5;
+        --muted: #a0a0a0;
+        --faint: #6f6f6f;
+        --line: #232323;
+        --line-strong: #3a3a3a;
+        --tile: #161616;
+        --accent: #8a96ff;
       }
     }
     * { box-sizing: border-box; margin: 0; }
     html { -webkit-text-size-adjust: 100%; }
     body {
-      min-height: 100vh;
       padding: 0 16px;
       background: var(--bg);
       color: var(--fg);
       font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       line-height: 1.5;
     }
-    .mono { font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
-
-    main {
-      max-width: 880px;
-      margin: 0 auto;
-      padding: 72px 0 40px;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; text-underline-offset: 3px; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .serif { font-family: "Newsreader", Georgia, "Times New Roman", serif; font-weight: 400; }
+    .mono {
+      font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--faint);
     }
+    .link { font-size: 0.85rem; white-space: nowrap; }
 
-    header { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .tag { color: var(--muted); font-size: 0.8rem; }
-    .dot {
-      display: inline-block;
-      width: 8px;
-      height: 8px;
-      margin-right: 8px;
-      border-radius: 50%;
-      background: var(--accent);
-      vertical-align: 1px;
-    }
+    main { max-width: 760px; margin: 0 auto; padding: 88px 0 32px; }
 
-    h1 {
-      margin: 96px 0 0;
-      font-weight: 600;
-      font-size: clamp(2.75rem, 10vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -0.045em;
-    }
-    h1 span { color: var(--muted); }
+    h1 { font-size: clamp(2.4rem, 7vw, 3.25rem); line-height: 1.1; letter-spacing: -0.01em; }
+    .intro { margin-top: 12px; max-width: 34rem; color: var(--muted); font-size: 1.1rem; line-height: 1.6; }
 
-    .section-label {
+    .latest {
       display: flex;
       justify-content: space-between;
-      margin: 96px 0 0;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--fg);
-      color: var(--muted);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
+      align-items: flex-end;
+      gap: 24px;
+      margin: 48px 0 64px;
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .latest h2 { margin: 6px 0 4px; font-size: 1.45rem; line-height: 1.25; }
+    .latest h2 a { color: var(--fg); }
+    .latest p { color: var(--muted); }
+
+    section { margin-bottom: 64px; }
+    .section-title {
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--line-strong);
+      font-size: 1.6rem;
+      line-height: 1.2;
     }
 
-    ol { list-style: none; padding: 0; }
-    a.app {
-      display: grid;
-      grid-template-columns: 3.5rem 1fr auto;
+    .featured { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+    .media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--tile);
+      display: flex;
       align-items: center;
+      justify-content: center;
+      color: var(--faint);
+    }
+    .media video, .media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .media svg { width: 28px; height: 28px; }
+    .card h3 { margin: 12px 0 2px; font-size: 1rem; font-weight: 500; }
+    .card p { margin-bottom: 6px; color: var(--muted); font-size: 0.9rem; }
+
+    .list { list-style: none; padding: 0; }
+    .list li {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
       gap: 16px;
-      padding: 28px 0;
+      padding: 12px 0;
       border-bottom: 1px solid var(--line);
-      color: inherit;
-      text-decoration: none;
-      transition: background 0.15s ease;
     }
-    a.app:hover { background: var(--row-hover); }
-    a.app:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-    .num { color: var(--muted); font-size: 0.8rem; }
-    .text { display: flex; align-items: baseline; flex-wrap: wrap; column-gap: 24px; row-gap: 2px; }
-    .name {
-      font-size: clamp(1.6rem, 4.5vw, 2.25rem);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      transition: color 0.15s ease;
-    }
-    .desc { color: var(--muted); font-size: 1rem; }
-    .arrow {
-      font-size: 1.5rem;
+    .list li:last-child { border-bottom: none; }
+    .list .desc { color: var(--faint); }
+
+    .books { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+    .book { display: flex; gap: 18px; }
+    .cover {
+      flex-shrink: 0;
+      width: 96px;
+      aspect-ratio: 2 / 3;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--tile);
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-size: 0.8rem;
+      line-height: 1.25;
       color: var(--muted);
-      transition: transform 0.2s ease, color 0.15s ease;
+      overflow: hidden;
+      position: relative;
     }
-    a.app:hover .name, a.app:hover .arrow { color: var(--accent); }
-    a.app:hover .arrow { transform: translateX(6px); }
+    .cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .book h3 { font-size: 1.25rem; line-height: 1.25; }
+    .book .mono { display: block; margin: 4px 0 8px; }
+    .book p { margin-bottom: 10px; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
 
     footer {
-      margin-top: auto;
-      padding-top: 96px;
       display: flex;
       justify-content: space-between;
-      color: var(--muted);
-      font-size: 0.75rem;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--faint);
+      font-size: 0.8rem;
     }
+    footer nav { display: flex; gap: 16px; }
+    footer a { color: var(--muted); }
 
-    @media (max-width: 600px) {
-      main { padding-top: 40px; }
-      h1 { margin-top: 64px; }
-      .section-label { margin-top: 64px; }
-      a.app { grid-template-columns: 2rem 1fr auto; padding: 22px 0; }
-      .text { flex-direction: column; }
-    }
-    @media (prefers-reduced-motion: reduce) {
-      a.app, .name, .arrow { transition: none; }
-      a.app:hover .arrow { transform: none; }
+    @media (max-width: 640px) {
+      main { padding-top: 56px; }
+      .latest { flex-direction: column; align-items: flex-start; gap: 12px; }
+      .featured { grid-template-columns: 1fr; }
+      .books { grid-template-columns: 1fr; }
+      .list li { flex-direction: column; gap: 2px; }
     }
   </style>
 </head>
 <body>
   <main>
     <header>
-      <span class="tag mono"><span class="dot"></span>paulbendorsamuel.com</span>
-      <span class="tag mono">✦</span>
+      <h1 class="serif">Paul Bendor-Samuel</h1>
+      <p class="intro">I build small, opinionated apps and write about thinking with tools. Currently in New York.</p>
     </header>
 
-    <h1>Paul Bendor&#8209;Samuel<br><span>builds things.</span></h1>
+    <!-- Update this block when a new Thinking in Ink post goes out -->
+    <article class="latest">
+      <div>
+        <span class="mono">Latest from Thinking in Ink · Nov 2026</span>
+        <h2 class="serif"><a href="#">The notebook is the interface</a></h2>
+        <p>Why I keep coming back to paper, even while building AI tools.</p>
+      </div>
+      <a class="link" href="#">Read on Substack ↗</a>
+    </article>
 
-    <div class="section-label mono"><span>Projects</span><span id="count"></span></div>
+    <section>
+      <h2 class="section-title serif">Featured work</h2>
+      <!-- To use a video loop, put <video src="media/prattle.mp4" autoplay muted loop playsinline></video> inside .media -->
+      <div class="featured">
+        <div class="card">
+          <div class="media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></div>
+          <h3>Prattle</h3>
+          <p>Dictation that stays on your phone</p>
+          <a class="link" href="#">Write-up →</a>
+        </div>
+        <div class="card">
+          <div class="media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></div>
+          <h3>Twine</h3>
+          <p>Video messages you can skim</p>
+          <a class="link" href="#">Write-up →</a>
+        </div>
+        <div class="card">
+          <div class="media"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M7 4v16l13-8z"/></svg></div>
+          <h3>Holistic</h3>
+          <p>Wellness tracking, all in one place</p>
+          <a class="link" href="#">Write-up →</a>
+        </div>
+      </div>
+    </section>
 
-    <!-- To add or change an app, copy one <li> block below -->
-    <ol>
-      <li>
-        <a class="app" href="https://holistic.paulbendorsamuel.com" target="_blank" rel="noopener">
-          <span class="num mono"></span>
-          <span class="text"><span class="name">Holistic</span><span class="desc">Holistic wellness tracking</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a class="app" href="https://pip.paulbendorsamuel.com" target="_blank" rel="noopener">
-          <span class="num mono"></span>
-          <span class="text"><span class="name">Pip</span><span class="desc">Product management interview prep</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a class="app" href="https://doubletake.paulbendorsamuel.com" target="_blank" rel="noopener">
-          <span class="num mono"></span>
-          <span class="text"><span class="name">Double Take</span><span class="desc">Virtual try-on</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a class="app" href="https://glimmer.paulbendorsamuel.com" target="_blank" rel="noopener">
-          <span class="num mono"></span>
-          <span class="text"><span class="name">Glimmer</span><span class="desc">Comedy and concert planning</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-      <li>
-        <a class="app" href="https://overwatch.paulbendorsamuel.com" target="_blank" rel="noopener">
-          <span class="num mono"></span>
-          <span class="text"><span class="name">Overwatch</span><span class="desc">AI assistant</span></span>
-          <span class="arrow" aria-hidden="true">→</span>
-        </a>
-      </li>
-    </ol>
+    <section>
+      <h2 class="section-title serif">More things I've made</h2>
+      <ul class="list">
+        <li><span>Glimmer <span class="desc">· Comedy and concert planning</span></span><a class="link" href="#">Write-up →</a></li>
+        <li><span>Kindred <span class="desc">· Hyper-local NYC meetups</span></span><a class="link" href="#">Write-up →</a></li>
+        <li><span>Pip <span class="desc">· Product management interview prep</span></span><a class="link" href="#">Write-up →</a></li>
+        <li><span>Double Take <span class="desc">· Virtual try-on</span></span><a class="link" href="#">Write-up →</a></li>
+        <li><span>Overwatch <span class="desc">· Personal AI assistant</span></span><a class="link" href="#">Write-up →</a></li>
+      </ul>
+    </section>
 
-    <footer class="mono">
+    <section>
+      <h2 class="section-title serif">Books</h2>
+      <div class="books">
+        <div class="book">
+          <div class="cover serif">Flower of Hatred</div>
+          <div>
+            <h3 class="serif">Flower of Hatred</h3>
+            <span class="mono">Novel · Year</span>
+            <p>One or two lines on what the book is about and who it's for.</p>
+            <a class="link" href="#">Get the book →</a>
+          </div>
+        </div>
+        <div class="book">
+          <div class="cover serif">Breaking into product management</div>
+          <div>
+            <h3 class="serif">Breaking into product management</h3>
+            <span class="mono">Nonfiction · Year</span>
+            <p>A practical guide for landing your first PM role.</p>
+            <a class="link" href="#">Get the book →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
       <span>© <span id="y"></span> Paul Bendor-Samuel</span>
+      <nav>
+        <a href="#">Substack</a>
+        <a href="#">LinkedIn</a>
+        <a href="#">X</a>
+      </nav>
     </footer>
   </main>
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    const nums = document.querySelectorAll('.num');
-    nums.forEach((el, i) => { el.textContent = String(i + 1).padStart(2, '0'); });
-    document.getElementById('count').textContent = String(nums.length).padStart(2, '0');
   </script>
 </body>
 </html>
