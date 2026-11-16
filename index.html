@@ -139,6 +139,7 @@
       .list li { flex-direction: column; gap: 2px; }
     }
   </style>
+  <script src="/analytics.js" defer></script>
 </head>
 <body>
   <main>
@@ -147,8 +148,8 @@
       <p class="intro">Writer, builder, product leader. Building a better world, one idea at a time. Currently based in New York City.</p>
     </header>
 
-    <!-- Update this block when a new Thinking in Ink post goes out -->
-    <article class="latest">
+    <!-- Update this block (including data-item) when a new Thinking in Ink post goes out -->
+    <article class="latest" data-section="latest_essay" data-item="How AI will rewrite the geography of work (twice)">
       <div>
         <span class="mono">Latest from Thinking in Ink · Jul 2026</span>
         <h2 class="serif"><a href="https://thinkinginink.substack.com/p/how-ai-will-rewrite-the-geography">How AI will rewrite the geography of work (twice)</a></h2>
@@ -157,7 +158,7 @@
       <a class="link" href="https://thinkinginink.substack.com/p/how-ai-will-rewrite-the-geography">Read on Substack ↗</a>
     </article>
 
-    <section>
+    <section data-section="featured_work">
       <h2 class="section-title serif">Featured work</h2>
       <!-- To use a video loop, put <video src="media/prattle.mp4" autoplay muted loop playsinline></video> inside .media -->
       <div class="featured">
@@ -179,10 +180,10 @@
       </div>
     </section>
 
-    <section>
+    <section data-section="more_projects">
       <h2 class="section-title serif">More things I've made</h2>
       <ul class="list">
-        <li><span>Lore <span class="desc">· Ebook-to-audiobook converter</span></span><a class="link" href="https://thinkinginink.substack.com/p/project-lore-ebook-to-audiobook-converter">Write-up →</a></li>
+        <li data-item="Lore"><span>Lore <span class="desc">· Ebook-to-audiobook converter</span></span><a class="link" href="https://thinkinginink.substack.com/p/project-lore-ebook-to-audiobook-converter">Write-up →</a></li>
         <li><span>Glimmer <span class="desc">· Comedy and concert planning</span></span></li>
         <li><span>Kindred <span class="desc">· Hyper-local NYC meetups</span></span></li>
         <li><span>Pip <span class="desc">· Product management interview prep</span></span></li>
@@ -191,10 +192,10 @@
       </ul>
     </section>
 
-    <section>
+    <section data-section="books">
       <h2 class="section-title serif">Books</h2>
       <div class="books">
-        <div class="book">
+        <div class="book" data-item="Flower of Hatred">
           <img class="cover-img" src="media/flower-of-hatred.jpg" alt="Flower of Hatred cover" width="320" height="480" loading="lazy">
           <div>
             <h3 class="serif">Flower of Hatred</h3>
@@ -203,7 +204,7 @@
             <a class="link" href="https://a.co/d/0b1kpZhb">Get the book →</a>
           </div>
         </div>
-        <div class="book">
+        <div class="book" data-item="Get Hired as a Product Manager">
           <img class="cover-img" src="media/get-hired-as-a-product-manager.jpg" alt="Get Hired as a Product Manager cover" width="320" height="511" loading="lazy">
           <div>
             <h3 class="serif">Get Hired as a Product Manager</h3>
@@ -215,7 +216,7 @@
       </div>
     </section>
 
-    <footer>
+    <footer data-section="footer">
       <span>© <span id="y"></span> Paul Bendor-Samuel</span>
       <nav>
         <a href="https://thinkinginink.substack.com/">Substack</a>
